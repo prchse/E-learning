@@ -1,0 +1,543 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <constant name="struts.mapper.action.prefix.enabled" value="true" />
+     <constant name="struts.multipart.saveDir" value="D:/" />
+    <constant name="struts.multipart.maxSize" value="50485760" /> <!-- Total 10 MB-->
+    <package name="default" extends="struts-default">
+        <action name="login">
+            <result>login.jsp</result>
+            
+        </action>
+        
+          
+        <action name="ManageStudents" class="com.elearning.model.ManageStudent" method="studentListExtract">
+            <result name="success">AdminManageStudent.jsp</result>
+        </action>
+        <action name="Studentdetail" class="com.elearning.model.ManageStudent" method="execute" >
+            <result name="success">AdminStudentDetail.jsp</result>
+            <result name="not found">not.jsp</result>
+        </action>
+        <action name="activate" class="com.elearning.model.ManageStudent" method="activate">
+            <result name="success">AdminStudentDetail.jsp</result>
+            <result name="error">Loginerror.jsp</result>
+        </action>
+        <action name="deactivate" class="com.elearning.model.ManageStudent" method="deactivate">
+            <result name="success">AdminStudentDetail.jsp</result>
+            <result name="error">Loginerror.jsp</result>
+        </action>
+        <action name="edit" class="com.elearning.model.ManageStudent" method="studentDetail">
+            <result name="success">AdminStudentEdit.jsp</result>
+        </action>
+        
+        <action name="cancel_edit" class="com.elearning.model.ManageStudent" method="studentDetail">
+            <result>AdminStudentDetail.jsp</result>
+        </action>
+        <action name="update_student" class="com.elearning.model.ManageStudent" method="studentUpdate">
+            <result name="success">AdminSuccess.jsp</result>
+        </action>
+        <action name="Viewcourse" class="com.elearning.model.ManageCourse" method="courseList">
+            <result name="success">AdminViewCourses.jsp</result>
+        </action>
+        <action name="Addcourse" class="com.elearning.model.ManageCourse" method="addCourse">
+            <result name="success">AdminAddTopic.jsp</result>
+            <result name="error">error.jsp</result>
+        </action>
+        <action name="addtopicnext" class="com.elearning.model.ManageTopic" method="addTopic">
+            <result name="success">AdminTest.jsp</result>
+            <result name="error">error.jsp</result>
+        </action>
+        
+        <action name="addtopicnew" class="com.elearning.model.ManageTopic" method="addTopic">         
+           
+                <result name="success">AdminAddTopic.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="test" class="com.elearning.model.ManageTopic" method="topicList">         
+           
+                <result name="success">AdminTopicList.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+         <action name="manageTopic" class="com.elearning.model.ManageTopic" method="delete">         
+           
+                <result name="success" >AdminTopicList.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="manageTopicedit" class="com.elearning.model.ManageTopic" method="editshow">         
+           
+                <result name="success" >AdminTopicEdit.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="topiceditsave" class="com.elearning.model.ManageTopic" method="editsave">         
+           
+                <result name="success" >AdminTopicList.jsp</result>
+                <result name="error">error.jsp</result>   
+                <result name="checkfromModify">AdminModifyCourse.jsp</result> 
+        </action>
+        <action name="addquiz" class="com.elearning.model.ManageTopic" method="addquiz">         
+           
+                <result name="success" >AdminQuestion.jsp</result>
+                <result name="error">error.jsp</result>  
+                <result name="Exist">index.jsp</result>  
+        </action>
+        <action name="addque" class="com.elearning.model.ManageTopic" method="addque">         
+           
+                <result name="success" type="redirect" >AdminQuestion.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="quedone" class="com.elearning.model.ManageTopic" method="addque">  
+                <result name="success">AdminTest.jsp</result>   
+                    <result name="error">error.jsp</result>    
+        </action>
+       
+        <action name="addassign" class="com.elearning.model.ManageTopic" method="addAssign">         
+           
+                <result name="success">AdminTopicList.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="ViewTopic" class="com.elearning.model.ManageTopic" method="topicList">
+            <result name="success">AdminViewTopic.jsp</result>
+            <result name="error">error.jsp</result>
+            <result name="norecord">AdminViewCourses.jsp</result>
+        </action>
+        <action name="ViewAssignment" class="com.elearning.model.Assignment" method="assignList">
+            <result name="success">AdminViewAssignment.jsp</result>
+            <result name="error">error.jsp</result>
+            <result name="norecord">AdminViewTopic.jsp</result>
+        </action>
+        <action name="ViewQuiz" class="com.elearning.model.Quiz" method="questionList">
+            <result name="success">AdminViewQuiz.jsp</result>
+            <result name="error">error.jsp</result>
+            <result name="norecord">AdminViewTopic.jsp</result>
+        </action>
+        <action name="ModifyCourse" class="com.elearning.model.ManageCourse" method="courseList">
+            <result name="success">AdminSelectCourse.jsp</result>
+            <result name="error">error.jsp</result>
+        </action>
+        <action name="AdminTopicList" class="com.elearning.model.ManageTopic" method="topicList">
+            <result name="success">AdminTopicList.jsp</result>
+            <result name="error">error.jsp</result>
+            
+        </action>
+        <action name="CheckQuiz" class="com.elearning.model.Quiz" method="checkQuiz">
+            <result name="success">AdminQuiz.jsp</result>
+            <result name="quizexist">AdminTopicList.jsp</result>  
+             <result name="error">error.jsp</result>     
+        </action>
+        
+         <action name="coursedelete" class="com.elearning.model.ManageCourse" method="delete" >                   
+                <result name="success">AdminManageCourse.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="addcontentTopic" class="com.elearning.model.ManageCourse" method="courseList" >                   
+                <result name="success">modifytopic.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+         <action name="edittopicm" class="com.elearning.model.ManageTopic" method="topicList" >                   
+                <result name="success">topiclist.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="EditCourseDetail" class="com.elearning.model.ManageCourse" method="courseList" >                   
+                <result name="success">ListCourseEdit.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="courseEdit" class="com.elearning.model.ManageCourse" method="EditShow" >                   
+                <result name="success">EditCourse.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="EditcourseSave" class="com.elearning.model.ManageCourse" method="Edit" >                   
+                <result name="success">success.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action> 
+        <action name="ChangeStatus" class="com.elearning.model.ManageStudent" method="status"> 
+            <result name="success">AdminManageStudent.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action> 
+        <action name="StudentLog" class="com.elearning.model.ManageStudent" method="StudentLog"> 
+            <result name="success">AdminStudentLog.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action> 
+        <action name="StudentCourse" class="com.elearning.model.ManageStudent" method="course"> 
+            <result name="success" >AdminStudentCourse.jsp</result>
+            <result name="successNoCourse" >AdminManageStudent.jsp</result>            
+                <result name="error">error.jsp</result>    
+        </action> 
+        <action name="StudentTopic" class="com.elearning.model.ManageStudent" method="course"> 
+            <result name="success" >AdminStudentTopic.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action> 
+        <action name="ViewTopicStudent" class="com.elearning.model.ManageStudent" method="topic"> 
+            <result name="success" >AdminViewTopicStudent.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action> 
+        <action name="ModifyCourseTopicList" class="com.elearning.model.ManageTopic" method="topicList"> 
+            <result name="success" >AdminModifyCourse.jsp</result>
+                <result name="error">error.jsp</result>    
+                <result name="norecord">noRecord.jsp</result>
+        </action> 
+        <action name="DeleteQuizView" class="com.elearning.model.Quiz" method="deleteConfirm" > 
+            <result name="success" >AdminDeleteQuizView.jsp</result>
+                <result name="error">error.jsp</result> 
+                <result name="noquiz">AdminQuizMenu.jsp</result>      
+        </action> 
+        <action name="DeleteQuiz" class="com.elearning.model.Quiz" method="delete" > 
+            <result name="success" >AdminQuizMenu.jsp</result>
+                <result name="error">error.jsp</result> 
+                     
+        </action> 
+         <action name="ModifyQuestionView" class="com.elearning.model.Quiz" method="deleteConfirm" > 
+            <result name="success" >AdminModifyQuestionView.jsp</result>
+                <result name="error">error.jsp</result> 
+                 <result name="noquiz">AdminQuizMenu.jsp</result>   
+                     
+        </action> 
+        <action name="AdminQuestionEditView" class="com.elearning.model.Quiz" method="editQuestion" > 
+            <result name="success" >AdminQuestionEditView.jsp</result>
+                <result name="error">error.jsp</result> 
+                 <result name="noquiz">AdminQuizMenu.jsp</result>   
+                     
+        </action> 
+        <action name="editQuestionSave" class="com.elearning.model.Quiz" method="editQuestionSave" > 
+            <result name="success" >AdminModifyQuestionView.jsp</result>
+                <result name="error">error.jsp</result> 
+                 <result name="noquiz">AdminQuizMenu.jsp</result>   
+                     
+        </action> 
+        <action name="DeleteQuestion" class="com.elearning.model.Quiz" method="deleteQuestion" > 
+            <result name="success" >AdminModifyQuestionView.jsp</result>
+                <result name="error">error.jsp</result> 
+                   
+                     
+        </action>
+        <action name="RedirectQuestion">
+            <result>AdminAddQuestionModify.jsp</result>
+            
+        </action>
+       
+        <action name="EditQuizDetail" class="com.elearning.model.Quiz" method="deleteConfirm" > 
+            <result name="success" >AdminQuizEditModify.jsp</result>
+                <result name="error">error.jsp</result> 
+                   
+                     
+        </action> 
+         <action name="QuizEditModify" class="com.elearning.model.Quiz" method="editQuiz" > 
+            <result name="success" >AdminQuizMenu.jsp</result>
+                <result name="error">error.jsp</result> 
+                   
+                     
+        </action> 
+        <action name="DeleteAssignmentView" class="com.elearning.model.Assignment" method="deleteConfirm" > 
+            <result name="success" >AdminDeleteAssignmentView.jsp</result>
+                <result name="error">error.jsp</result> 
+                <result name="noassign">AdminAssignmentMenu.jsp</result>
+                   
+                     
+        </action> 
+        
+        <action name="DeleteAssignment" class="com.elearning.model.Assignment" method="delete" > 
+            <result name="success" >AdminAssignmentMenu.jsp</result>
+                <result name="error">error.jsp</result>                    
+        </action> 
+        
+        <action name="EditAssignmentView" class="com.elearning.model.Assignment" method="deleteConfirm" > 
+            <result name="success" >AdminEditAssignmentView.jsp</result>
+                <result name="error">error.jsp</result>
+                <result name="noassign">AdminAssignmentMenu.jsp</result>                    
+        </action>
+        
+         <action name="EditSaveAssignment" class="com.elearning.model.Assignment" method="edit" > 
+            <result name="success" >AdminAssignmentMenu.jsp</result>
+                <result name="error">error.jsp</result>
+                <result name="noassign">AdminAssignmentMenu.jsp</result>                    
+        </action>
+        <action name="CheckAssignment" class="com.elearning.model.Assignment" method="check">
+            <result name="success">AdminAssignment.jsp</result>
+            <result name="error">error.jsp</result>
+            <result name="assign">AdminAssignmentMenu.jsp</result>
+        </action>
+         <action name="DeleteTopicModify" class="com.elearning.model.ManageTopic" method="delete">         
+           
+                <result name="success" >AdminModifyCourse.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="redirectPage">         
+           
+                <result>AdminAddTopicModify.jsp</result>
+                
+        </action>
+        <action name="SaveNewTopicModify" class="com.elearning.model.ManageTopic" method="addTopic" >         
+           
+                <result name="success" >AdminModifyCourse.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="DeleteCourseSelect" class="com.elearning.model.ManageCourse" method="courseList">
+             <result name="success" >AdminDeleteCourse.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="RedirecttoManagecourse">         
+           
+                <result>AdminManageCourse.jsp</result>
+                
+        </action>
+         <action name="Checkassign" class="com.elearning.model.Assignment" method="checkAssign">
+            <result name="success">AdminAssignment.jsp</result>
+            <result name="error">error.jsp</result>
+            <result name="assignexist">AdminTopicList.jsp</result>
+        </action>
+          <action name="UploadCourse" class="com.elearning.model.ManageCourse" method="upload">
+            <result name="success">Admin.jsp</result>
+            <result name="error">error.jsp</result>
+            <result name="noAssignQuiz">AdminTopicList.jsp</result>
+             <result name="noContent">AdminTopicList.jsp</result>
+            <result name="noBothThing">AdminTopicList.jsp</result>
+        </action>
+         <action name="ChangeUpload" class="com.elearning.model.ManageCourse" method="changeUpload">
+             <result name="success" >AdminViewCourses.jsp</result>
+                <result name="error">error.jsp</result>
+                 <result name="notopic">AdminViewCourses.jsp</result>
+           <result name="noBothThing">AdminViewCourses.jsp</result>
+            <result name="noAssignQuiz">AdminViewCourses.jsp</result>
+             <result name="noContent">AdminViewCourses.jsp</result>    
+        </action>
+              
+        <action name="loginprocess" class="com.elearning.model.Login">  
+            <result name="admin">Admin.jsp</result>  
+            <result name="user">loginsuccess.jsp</result>
+            <result name="error">index.jsp</result>  
+              <result name="errord">login.jsp</result>  
+        </action>  
+       
+ 
+        <action name="logout" class="com.elearning.model.Login" method="logout">  
+            <result name="success" >index.jsp</result>  
+        </action>  
+        <action name="profile" class="com.elearning.model.ManageStudent" method="loadProfile">
+            <result name="success">UpdateProfile.jsp</result>
+        </action>
+        <action name="updatesProfile" class="com.elearning.model.ManageStudent" method="updateProfile">
+            <result name="success">UpdateProfile.jsp</result>
+            <result name="error">error.jsp</result>
+        </action>
+        
+
+
+        <action name="register" >
+    
+            <result >registration.jsp</result>  
+           
+    
+        </action>
+        <action name="registerprocess" class="com.elearning.model.RegisterAction">
+    
+            <result name="success">index.jsp</result>  
+            <result name="error" >Adminerror.jsp</result>
+            <result name="idexist">index.jsp</result>
+    
+        </action>
+                <action name="emailer" class="com.elearning.model.Emailer">
+            <result name="success">AdminSuccess.jsp</result>
+            <result name="error">Adminerror.jsp</result>
+        </action>
+        <action name="forgotpass">
+            <result>ForgotPassword.jsp</result>
+        </action>
+        
+     
+        
+        
+        <action name="FileUpload" class="com.elearning.model.UploadFile" method="uploadFile" >
+            
+            <result name="success">AdminFileUpload.jsp</result>
+            <result name="error">Adminerror.jsp</result>
+
+        </action>
+        <action name="UploadAudio" class="com.elearning.model.UploadFile" method="uploadAudio" >
+            
+            <result name="success">AdminSuccess.jsp</result>
+            <result name="error">Adminerror.jsp</result>
+
+        </action>
+        <action name="UploadVideo" class="com.elearning.model.UploadFile" method="uploadVideo" >
+            
+            <result name="success">AdminSuccess.jsp</result>
+            <result name="error">Adminerror.jsp</result>
+
+        </action>
+        
+       
+        <action name="userviewcourses" class="com.elearning.model.ManageCourse" method="courseList" >
+          
+            <result name="success">ViewCourses.jsp</result>
+            <result name="error">error.jsp</result>
+
+        </action>
+        <action name="loggedusercourse" class="com.elearning.model.ManageCourse" method="courseList" >
+          
+            <result name="success">UserViewCourses.jsp</result>
+           
+        </action>
+        
+     
+        <!--quiz action started-->
+       
+          <action name="QuizRetrieve" class="com.elearning.model.Quiz" method="getOneQuestion">
+            <result name="quiznotavailable">QuizNotAvail.jsp</result>
+            <result name="success">getQuestion.jsp</result>
+            <result name="exist">EnrolledCourseTopic.jsp</result>
+        </action>
+            
+        
+         <action name="nextQues"  class="com.elearning.model.Quiz" method="loadNextQuestion">
+            <result name="successful">QuizResult.jsp</result>
+            <result name="success">getQuestion.jsp</result>
+        </action>
+         <action name="QuizSubmit" class="com.elearning.model.Quiz" method="submitQuestion">
+            
+           <result name="successful">QuizResult.jsp</result>
+            
+        </action>
+       <action name="ViewTopicContents" class="com.elearning.model.ManageTopic" method="viewTopicContent">
+            <result name="success">ViewTopicContent.jsp</result>
+            
+        </action>  
+       <action name="CheckAssignmentAttempt"  class="com.elearning.model.ManageStudent" method="assignmentAttempt">
+            <result name="success">AssignmentAttempt.jsp</result>
+            <result name="exist">EnrolledCourseTopic.jsp</result>
+            <!--<result name="success">NotAvail.jsp</result>-->
+        </action> 
+        <action name="FileUploadAssignment" class="com.elearning.model.ManageStudent" method="uploadAssignmentFile">
+          
+            <result name="success">EnrolledCourseTopic.jsp</result>
+            <result name="error">Adminerror.jsp</result>
+
+        </action>
+      
+        
+        <!--Quiz actions completed-->
+       
+               <action name="enrollcourse" class="com.elearning.model.EnrollCourse" method="enrollToCourse">
+            <result name="success" >UserViewCourses.jsp</result>
+             <result name="alreadyenrolled">UserViewCourses.jsp</result>
+            
+        </action>
+        
+         <action name="disenrollcourse" class="com.elearning.model.EnrollCourse" method="disenrollToCourse">
+            <result name="notenrolledalready" >NotEnrolled.jsp</result>
+             <result name="success">Disenrolled.jsp</result>
+        </action>
+        <action name="enrolledCourses" class="com.elearning.model.ManageStudent" method="enrolledCourse">
+            <result name="success" >EnrolledCourse.jsp</result>
+             <result name="error">error.jsp</result>
+            
+        </action>
+         <action name="ViewEnrolledCourseTopic" class="com.elearning.model.ManageStudent" method="enrolledCourseTopic">
+            <result name="success">EnrolledCourseTopic.jsp</result>
+             <result name="error">error.jsp</result>
+            
+        </action>
+         <action name="CheckQuizAttempt" class="com.elearning.model.ManageStudent" method="enrolledCour">
+            <result name="success" >EnrolledCourseTopic.jsp</result>
+             <result name="error">error.jsp</result>
+            
+        </action>
+        <!-- Siddarth new actions closed again-->
+        <action name="NotificationAdmin" class="com.elearning.model.Notification" method="notifyAdmin">
+            <result name="success" >AdminNotification.jsp</result>
+             <result name="error">error.jsp</result>
+              <result name="nonotify">AdminNotification.jsp</result>
+            
+        </action>
+        <action name="NotifyChangeUser" class="com.elearning.model.ManageStudent" method="changeStatusNotify">
+            <result name="success" >AdminStudentEdit.jsp</result>
+             <result name="error">error.jsp</result>
+            
+        </action>
+        <action name="ChangeStatusNotify" class="com.elearning.model.ManageStudent" method="status"> 
+            <result name="success">AdminNotification.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action> 
+         <!--Quiz Track-->
+          <action name="ViewStudentQuiz" class="com.elearning.model.ManageStudent" method="quizStatus"> 
+            <result name="success">AdminStudentQuiz.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action> 
+           <action name="ViewStudentAssignment" class="com.elearning.model.ManageStudent" method="assignStatus"> 
+            <result name="success">AdminStudentAssignment.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>  
+        <!--Notification Admin-->
+         <action name="NotifyAssign" class="com.elearning.model.ManageStudent" method="notifyAssignView"> 
+            <result name="success">AdminNotifyAssignView.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        <action name="ChangeStatusAssign" class="com.elearning.model.ManageTopic" method="ChangeStatusAssign"> 
+            <result name="success">AdminNotification.jsp</result>
+                <result name="error">error.jsp</result>    
+        </action>
+        
+          <action name="StudentNotify" class="com.elearning.model.Notification" method="StudentNotify"> 
+            <result name="success">StudentNotification.jsp</result>
+                <result name="error">error.jsp</result> 
+                 <result name="nonotify">StudentNotification.jsp</result>
+                   
+        </action>
+        <action name="NotifyAssignStud" class="com.elearning.model.ManageStudent" method="notifyAssignView"> 
+            <result name="success">StudentNotifyView.jsp</result>
+                <result name="error">error.jsp</result>
+                <result name="nonotify">index.jsp</result>    
+        </action>
+        <!-- New action has been added here-->
+         <action name="ViewQuizAnswer" class="com.elearning.model.Quiz" method="quizAnswer"> 
+            <result name="success">AdminViewQuiz.jsp</result>
+                <result name="error">error.jsp</result>
+                  
+        </action>
+        <!-- Latest -->
+        <action name="PreviousAttempt" class="com.elearning.model.Assignment" method="previousAttempt">
+             <result name="success">PreviousAttempt.jsp</result>   
+             <result name="error">error.jsp</result>          
+        </action>
+       
+       
+       
+       
+     <!--  <action name="download" class="com.elearning.model.DownloadAction">
+	<result name="success" type="stream">
+	  <param name="contentType">application/octet-stream</param>
+	  <param name="inputName">fileInputStream</param>
+           <param name="contentDisposition">attachment;filename=docUrl</param>
+	  <param name="bufferSize">1024</param>
+	</result>
+   </action>-->
+   <!-- download-->
+   <action name="download" class="com.elearning.model.ManageCourse" method="downloadFile">
+            <result name="downloadFile" type="stream">
+                <param name="inputName">fileToDownload</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentLength">${fileSize}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentCharSet">UTF-8</param>
+                <param name="allowCaching">true</param>
+            </result>
+        </action>
+        <!--end-->
+        <!-- button-->
+         <action name="loggedusercourse" class="com.elearning.model.ManageCourse" method="courseListToEnroll" >
+         
+           <result name="success">UserViewCourses.jsp</result>
+           <result name="error">error.jsp</result>
+          
+       </action>
+       <action name="loggedusercoursedis" class="com.elearning.model.ManageCourse" method="courseListToDisenroll" >
+         
+           <result name="success">UserViewCoursesDisenroll.jsp</result>
+           <result name="error">error.jsp</result>
+          
+       </action>
+        <!--end-->
+
+    </package>
+</struts>
